@@ -53,8 +53,6 @@ def read_cdf(filename: str):
             final_index = scan_index[i + 1]
         end = start + (final_index - scan_index[i]) // 2
 
-        if i == 0:
-            print("start={} end={}".format(start, end))
         spectra_i = {"mz": mass[start:end], "intensity": intensity[start:end]}
         spectra.append(spectra_i)
 

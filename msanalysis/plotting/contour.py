@@ -1,11 +1,13 @@
 """
-Wrappers for matplotlib contour plots.
+Data post-processing for matplotlib contour plots.
 """
+import numpy as np
+
 from msanalysis.plotting import select_mz_range
 
 
 def tricontourf(
-    ax, spectra: list, mz_lower: float, mz_upper: float, scan_skip: int = 50
+    spectra: list, mz_lower: float, mz_upper: float, scan_skip: int = 50, x_ax=None
 ):
 
     #
@@ -28,10 +30,10 @@ def tricontourf(
 
         y += mass_i.tolist()
         z += intensity_i.tolist()
-        x += [i] * n_y
 
-    #
-    # Plot
-    #
+        if x_ax is None:
+            x += [i] * n_y
+        else:
+            x += [x_ax[i]] * n_y
 
-    ax.tricontourf(x, y, z)
+    return (np.array(x), np.array(y), np.array(z))

@@ -21,10 +21,19 @@ scan0 = spectra[0]
 #
 # Plot
 #
+
+# It helps the tricontourf to space these larger then the window you
+# actually want and then crop out the edges
+mz_upper = 105
+mz_lower = 45
+
 plt.figure()
-# plt.plot(scan0["mz"], scan0["intensity"], c="k")
-contour.tricontourf(plt.gca(), spectra, 50, 100)
+x, y, z = contour.tricontourf(spectra, mz_lower, mz_upper)
+plt.tricontourf(x, y, z)
+plt.colorbar()
+
+plt.ylim(mz_lower + 5, mz_upper - 5)
+plt.ylabel("M/Z")
 plt.xlabel("Scan #")
-plt.ylabel("Intensity")
 plt.savefig("figures/ex2.png", dpi=600)
 
