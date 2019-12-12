@@ -37,7 +37,7 @@ install:
   - python setup.py develop --no-deps
 
 script:
-  - pytest -v --cov=msanalysis msanalysis/tests/
+  - pytest -v --cov=msanalysis msanalysis/
 
 notifications:
   email: false
