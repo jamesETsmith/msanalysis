@@ -32,7 +32,7 @@ install:
   # Create test environment for package
   - python devtools/scripts/create_conda_env.py -n=msanalysis -p=$PYTHON_VER devtools/conda-envs/msanalysis_env.yaml
     # Activate the test environment
-  - conda activate test
+  - conda activate msanalysis
     # Build and install package
   - python setup.py develop --no-deps
 
