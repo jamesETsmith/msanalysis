@@ -4,10 +4,26 @@ msanalysis
 [![Build Status](https://travis-ci.com/jamesETsmith/MSAnalysis.svg?branch=master)](https://travis-ci.com/jamesETsmith/MSAnalysis) [![codecov](https://codecov.io/gh/jamesETsmith/msanalysis/branch/master/graph/badge.svg)](https://codecov.io/gh/jamesETsmith/msanalysis)
 <!-- [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/REPLACE_WITH_APPVEYOR_LINK/branch/master?svg=true)](https://ci.appveyor.com/project/REPLACE_WITH_OWNER_ACCOUNT/msanalysis/branch/master) -->
 
-Tools for processing mass spectra.
+`msanalysis` is a lightweight python package to read and process mass spectra, specifically those in the CDF format.
+
 
 ---
-### Installing
+## Python Package Dependencies
+
+- pytest
+- pytest-cov
+- codecov
+- matplotlib
+- seaborn
+- netcdf4
+- numpy
+- scipy
+- pandas
+- black (only required for contributors)
+
+
+---
+## Installation
 
 Set up is meant to be easy! First we suggest installing all of prerequisites in a clean conda env:
 
@@ -28,6 +44,7 @@ python -m pip install -e . --user
 ```
 
 
+---
 ### Copyright
 
 Copyright (c) 2019, James E. T. Smith/ CU Boulder
