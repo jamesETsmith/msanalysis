@@ -100,3 +100,12 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+
+#
+# Custom ignores
+#
+examples/figures/*
+examples/*.png
+.vscode/
+scratch/

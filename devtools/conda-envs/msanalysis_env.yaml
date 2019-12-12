@@ -1,0 +1,21 @@
+name: msanalysis
+channels:
+dependencies:
+  # Base depends
+  - python
+  - pip
+    # Testing
+  - pytest
+  - pytest-cov
+  - codecov
+  # Plotting
+  - matplotlib
+  - seaborn
+  # msanalysis
+  - netcdf4
+  - nomkl
+  - numpy
+  - scipy
+  - pandas
+  # Misc
+  - black
