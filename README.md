@@ -25,7 +25,7 @@ msanalysis
 ---
 ## Installation
 
-Set up is meant to be easy! First we suggest installing all of prerequisites in a clean conda env:
+Set up is meant to be easy! First we suggest installing all of prerequisites in a clean conda env (run this inside the main directory of the package):
 
 ```bash
 conda env create -f devtools/conda-envs/msanalysis_env.yaml
@@ -43,6 +43,23 @@ If you aren't doing this in a conda env and don't have root user privileges use:
 python -m pip install -e . --user
 ```
 
+### Fresh install
+
+```bash
+git clone https://github.com/jamesETsmith/msanalysis.git
+cd msanalysis
+conda env create -f devtools/conda-envs/msanalysis_env.yaml
+python -m pip install -e .
+```
+
+---
+## Testing
+
+To check that everything is working, run the following from the main project directory:
+
+```bash
+pytest -v msanalysis --cov=msanalysis
+```
 
 ---
 ### Copyright

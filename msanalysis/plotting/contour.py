@@ -7,19 +7,20 @@ from msanalysis.plotting import select_mz_range
 
 
 def tricontourf(
-    spectra: list, mz_lower: float, mz_upper: float, scan_skip: int = 50, x_ax=None
+    spectra: list, mz_lower: float, mz_upper: float, keep_ith_scan: int = 50, x_ax=None
 ):
 
-    #
-    # Convert data to three lists for tricontourf
-    #
+    print(
+        "Suggestion: Choose a larger window than you want and then resize your plot to the desired window size"
+    )
 
+    # Convert data to three arrays for tricontourf
     x = []
     y = []
     z = []
 
     for i, spectra_i in enumerate(spectra):
-        if i % scan_skip != 0:  # Controls spacing of scan #
+        if i % keep_ith_scan != 0:  # Controls spacing of scan #
             continue
 
         mass_i, intensity_i = select_mz_range(
