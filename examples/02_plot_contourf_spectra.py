@@ -7,7 +7,7 @@ Date: 12/12/19
 
 import matplotlib.pyplot as plt
 
-from msanalysis.data_extraction import utils
+from msanalysis.data_extraction import read_cdf
 from msanalysis.sample_data import get_cdf_sample_path
 from msanalysis.plotting import contour
 
@@ -15,7 +15,7 @@ from msanalysis.plotting import contour
 #
 # Read in CDF
 #
-times, spectra = utils.read_cdf(get_cdf_sample_path())
+times, spectra = read_cdf(get_cdf_sample_path())
 scan0 = spectra[0]
 
 #

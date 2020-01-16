@@ -1,14 +1,14 @@
 import pytest
 import numpy as np
 
-from msanalysis.data_extraction import utils
+from msanalysis.data_extraction import read_cdf
 from msanalysis.sample_data import get_cdf_sample_path
 
 npt = np.testing
 
 
 def test_read_cdf():
-    times, spectra = utils.read_cdf(get_cdf_sample_path())
+    times, spectra = read_cdf(get_cdf_sample_path())
 
     npt.assert_equal(times.size, len(spectra))
 
