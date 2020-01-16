@@ -13,10 +13,9 @@ def get_relative_abundance(spectra: list, species: list, bin_width: float = 0.45
 
         # For each species of interest, bin and add the intensities
         for j, species_j in enumerate(species):
-            indices = np.where(
-                (mz > species_j - bin_width) & (mz < species_j - bin_width)
-            )
-
+            ub = species_j + bin_width
+            lb = species_j - bin_width
+            indices = np.where((mz > lb) & (mz < ub))
             I_j[j] = np.sum(I[indices])
 
         abundances.append(I_j)
