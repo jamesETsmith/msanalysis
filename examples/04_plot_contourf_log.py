@@ -20,14 +20,14 @@ from msanalysis.plotting import contour
 #
 # Read in CDF
 #
-times, spectra = read_cdf("test2.cdf")
+times, spectra = read_cdf(get_cdf_sample_path())
 scan0 = spectra[0]
 
 #
 # Read in LabView Data
 #
 cols = ["time", "b", "temp", "d", "e", "f", "g", "h"]
-df = pd.read_csv("test2.csv", names=cols)
+df = pd.read_csv(get_labview_sample_path(), names=cols)
 df["time"] -= df["time"][0]
 
 #
