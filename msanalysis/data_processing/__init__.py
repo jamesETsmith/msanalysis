@@ -1,4 +1,5 @@
 import numpy as np
+from .pyopenms_wrapper import calculate_abundance
 
 
 def get_relative_abundance(spectra: list, species: list, bin_width: float = 0.45):

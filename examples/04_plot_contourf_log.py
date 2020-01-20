@@ -1,5 +1,6 @@
 """
-Wish list item 3 stacking plots
+This example demonstrates how to switch the contourf plots to a log scale so that
+smaller peaks show up on the same contourf plot.
 
 Author: James E. T. Smith <james.smith9113@gmail.com>
 Date: 1/7/20

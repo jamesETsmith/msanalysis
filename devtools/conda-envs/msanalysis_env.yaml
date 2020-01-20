@@ -19,3 +19,5 @@ dependencies:
   - pandas
   # Misc
   - black
+  - pip:
+      - pyopenms
