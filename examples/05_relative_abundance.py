@@ -30,7 +30,7 @@ plt.figure()
 sns.set_style("darkgrid")
 labels = ["M/Z={}".format(mz) for mz in mzs]
 for i, lab in enumerate(labels):
-    plt.plot(times, abun[:, i], label=lab)
+    plt.plot(times, abun[i], label=lab)
 plt.xlabel("Time")
 plt.ylabel("Intensity")
 plt.legend()
