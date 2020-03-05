@@ -14,7 +14,7 @@ from msanalysis.data_processing import calculate_abundance
 #
 # Calculate Abundances for a Molecular Formula
 #
-data = calculate_abundance("AlCl2Br")
+data = calculate_abundance("Sn2C5H15")
 
 #
 # Plot

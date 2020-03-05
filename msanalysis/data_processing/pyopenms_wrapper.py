@@ -3,13 +3,16 @@ from pyopenms import EmpiricalFormula, CoarseIsotopePatternGenerator
 from pyopenms import MSSpectrum, MSExperiment, SavitzkyGolayFilter
 
 
-def calculate_abundance(mol_formula: str) -> dict:
+def calculate_abundance(mol_formula: str, tol: float = 1e-4) -> dict:
     """Calculate the isotopic abundance spectra for a give molecular formula.
     
     Parameters
     ----------
     mol_formula : str
         The molecular formula, e.g. "AlF3".
+
+    tol: float, optional
+        The minimun intensity value to keep in isotopic distribution, default is 1e-4.
     
     Returns
     -------
@@ -27,27 +30,28 @@ def calculate_abundance(mol_formula: str) -> dict:
         raise ValueError("mol_formula must be a string")
 
     # TODO add check that n_isotopes is enough
-    n_isotopes = 20
+    n_isotopes = 100
     data_dict = {}
 
     wm = EmpiricalFormula(mol_formula)
     isotopes = wm.getIsotopeDistribution(CoarseIsotopePatternGenerator(n_isotopes))
-    print("\nIsotopes for {}".format(mol_formula))
-    for iso in isotopes.getContainer():
-        print(iso.getMZ(), ":", iso.getIntensity())
-    print()
 
     data_dict["mz"] = np.array([iso.getMZ() for iso in isotopes.getContainer()])
     data_dict["intensity"] = np.array(
         [iso.getIntensity() for iso in isotopes.getContainer()]
     )
 
-    # Get rid of intensities = 0
-    data_dict["mz"] = data_dict["mz"][np.argwhere(data_dict["intensity"] > 0)][:, 0]
+    # Get rid of intensities < tol
+    data_dict["mz"] = data_dict["mz"][np.argwhere(data_dict["intensity"] > tol)][:, 0]
     data_dict["intensity"] = data_dict["intensity"][
-        np.argwhere(data_dict["intensity"] > 0)
+        np.argwhere(data_dict["intensity"] > tol)
     ][:, 0]
 
+    print("\nIsotopes for {}".format(mol_formula))
+    print("{:^6s}  {:^6s}".format("MZ", "Int."))
+    for i, mz in enumerate(data_dict["mz"]):
+        print("{:6.2f}  {:6.4f}".format(mz, data_dict["intensity"][i]))
+    print()
     return data_dict
 
 
