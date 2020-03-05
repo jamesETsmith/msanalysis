@@ -35,6 +35,8 @@ install:
   - conda activate msanalysis
     # Build and install package
   - python setup.py develop --no-deps
+  - cd patches
+  - python add_elements.py
 
 script:
   - pytest -v --cov=msanalysis msanalysis/

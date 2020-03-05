@@ -50,6 +50,18 @@ git clone https://github.com/jamesETsmith/msanalysis.git
 cd msanalysis
 conda env create -f devtools/conda-envs/msanalysis_env.yaml
 python -m pip install -e .
+cd patches
+python add_elements.py
+```
+
+### Patches
+
+Currently there is one patch while we wait to hear back on an issue from `PyOpenMS`.
+If you want to work with species like Indium, run the python script to patch up `msanalysis`.
+
+```bash
+cd patches
+python add_elements.py
 ```
 
 ---
