@@ -5,7 +5,6 @@ import time
 import os
 
 import numpy as np
-from numba import jit
 import netCDF4
 
 
