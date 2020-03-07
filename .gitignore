@@ -109,3 +109,5 @@ examples/figures/*
 examples/*.png
 .vscode/
 scratch/
+*.npy
+*.npz

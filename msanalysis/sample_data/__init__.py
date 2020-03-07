@@ -16,3 +16,7 @@ def get_cdf_sample_path():
 
 def get_labview_sample_path():
     return os.path.join(dir_path, "labview_data.csv")
+
+
+def get_txt_sample_path():
+    return os.path.join(dir_path, "TiCl4_SnF4.txt")

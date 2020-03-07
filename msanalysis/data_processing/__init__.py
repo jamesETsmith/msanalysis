@@ -4,6 +4,7 @@ from .pyopenms_wrapper import filter_spectrum
 from .peak_detection import find_ms_peaks
 from .peak_detection import deconvolute_spectrum
 from .peak_detection import embed_spectrum
+from .smoothing import moving_average
 
 
 def get_relative_abundance(
