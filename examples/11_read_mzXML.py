@@ -5,10 +5,12 @@ and make a contourf plots.
 Author: James E. T. Smith <james.smith9113@gmail.com>
 Date: 3/29/2020
 """
-from pyopenms import MSExperiment, MzXMLFile
 import time
 import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.colors as colors  # For log color scale
+from pyopenms import MSExperiment, MzXMLFile
+
 from msanalysis.plotting.contour import contourf
 
 # Use PyOpenMS to read mzXML
@@ -39,11 +41,20 @@ plt.plot(exp.getSpectra()[5000].get_peaks()[0], exp.getSpectra()[5000].get_peaks
 plt.xlim((190, 220))
 plt.ylabel("Intensitiy (UNITS UNKNOWN)")
 plt.xlabel("MZ")
-plt.savefig("single_spectra.png")
+plt.savefig("figures/ex11_single.png")
 
 plt.figure()
 plt.contourf(X * keep_ith_scan, Y, Z)
 cbar = plt.colorbar()
 cbar.ax.set_ylabel("Intensity (UNITS UNKNOWN)", rotation=270, fontsize=12, labelpad=15)
 plt.title("Regular Scale and No Smoothing")
-plt.savefig("test.png")
+plt.savefig("figures/ex11_contour.png")
+
+plt.figure()
+# print(Z.min())
+Z += 1e-5
+plt.contourf(X * keep_ith_scan, Y, Z, norm=colors.LogNorm(vmin=1e-3, vmax=Z.max()))
+cbar = plt.colorbar()
+cbar.ax.set_ylabel("Intensity (UNITS UNKNOWN)", rotation=270, fontsize=12, labelpad=15)
+plt.title("Regular Scale and No Smoothing")
+plt.savefig("figures/ex11_contour_logscale.png")
