@@ -56,6 +56,7 @@ intensities = intensities[subset, :]
 mz_lb, mz_ub = (60, 280)
 keep_ith_scan = 100
 X, Y, Z = contourf(mz, intensities, mz_lb, mz_ub, keep_ith_scan=keep_ith_scan)
+print(X.shape, Y.shape, Z.shape)
 
 #
 # Plot
