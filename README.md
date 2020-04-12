@@ -1,6 +1,7 @@
 msanalysis
 ==============================
 [//]: # (Badges)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/631fe5fec12f40c68a5336645e2ef56f)](https://app.codacy.com/manual/jamesETsmith/msanalysis?utm_source=github.com&utm_medium=referral&utm_content=jamesETsmith/msanalysis&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.com/jamesETsmith/MSAnalysis.svg?branch=master)](https://travis-ci.com/jamesETsmith/MSAnalysis) [![codecov](https://codecov.io/gh/jamesETsmith/msanalysis/branch/master/graph/badge.svg)](https://codecov.io/gh/jamesETsmith/msanalysis)
 <!-- [![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/REPLACE_WITH_APPVEYOR_LINK/branch/master?svg=true)](https://ci.appveyor.com/project/REPLACE_WITH_OWNER_ACCOUNT/msanalysis/branch/master) -->
 
