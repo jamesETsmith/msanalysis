@@ -3,6 +3,7 @@ pushd .
 cd $HOME
 # Make sure some level of pip is installed
 python -m ensurepip
+
 # Install Miniconda
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then
     # Make OSX md5 mimic md5sum from linux, alias does not work
@@ -29,21 +30,12 @@ echo ". $MINICONDA_HOME/etc/profile.d/conda.sh" >> ~/.bashrc  # Source the profi
 echo "conda activate" >> ~/.bashrc  # Activate conda
 source ~/.bashrc  # source file to get new commands
 #export PATH=$MINICONDA_HOME/bin:$PATH  # Old way, should not be needed anymore
+    
 conda config --add channels conda-forge
+    
 conda config --set always_yes yes
 conda install conda conda-build jinja2 anaconda-client
 conda update --quiet --all
-if [ "$TRAVIS_OS_NAME" == "osx" ]; then
-    HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade pyenv
-    # Pyenv requires minor revision, get the latest
-    PYENV_VERSION=$(pyenv install --list |grep $PYTHON_VER | sed -n "s/^[ \t]*\(${PYTHON_VER}\.*[0-9]*\).*/\1/p" | tail -n 1)
-    # Install version
-    pyenv install $PYENV_VERSION
-    # Use version for this
-    pyenv global $PYENV_VERSION
-    # Setup up path shims
-    eval "$(pyenv init -)"
-fi
-pip install --upgrade pip setuptools
+
 # Restore original directory
 popd
