@@ -3,7 +3,6 @@ pushd .
 cd $HOME
 # Make sure some level of pip is installed
 python -m ensurepip
-{% if (cookiecutter.dependency_source == 'Prefer conda-forge over the default anaconda channel with pip fallback' or cookiecutter.dependency_source == 'Prefer default anaconda channel with pip fallback') %}
 # Install Miniconda
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then
     # Make OSX md5 mimic md5sum from linux, alias does not work
@@ -30,13 +29,10 @@ echo ". $MINICONDA_HOME/etc/profile.d/conda.sh" >> ~/.bashrc  # Source the profi
 echo "conda activate" >> ~/.bashrc  # Activate conda
 source ~/.bashrc  # source file to get new commands
 #export PATH=$MINICONDA_HOME/bin:$PATH  # Old way, should not be needed anymore
-    {% if cookiecutter.dependency_source == "Prefer conda-forge over the default anaconda channel with pip fallback" %}
 conda config --add channels conda-forge
-    {% endif %}
 conda config --set always_yes yes
 conda install conda conda-build jinja2 anaconda-client
 conda update --quiet --all
-{% elif cookiecutter.dependency_source == 'Dependencies from pip only (no conda)' %}
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then
     HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade pyenv
     # Pyenv requires minor revision, get the latest
@@ -49,6 +45,5 @@ if [ "$TRAVIS_OS_NAME" == "osx" ]; then
     eval "$(pyenv init -)"
 fi
 pip install --upgrade pip setuptools
-{% endif %}
 # Restore original directory
 popd
