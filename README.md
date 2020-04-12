@@ -19,6 +19,7 @@ msanalysis
 - numpy
 - scipy
 - pandas
+- pyopenms
 - black (only required for contributors)
 
 
