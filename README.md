@@ -1,11 +1,18 @@
 msanalysis
 ==============================
 [//]: # (Badges)
-|   OS    |                                                                                 Build Status                                                                                  |
-| :-----: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|  Linux  |                       [![Build Status](https://travis-ci.com/jamesETsmith/MSAnalysis.svg?branch=master)](https://travis-ci.com/jamesETsmith/MSAnalysis)                       |
-|   OSX   |                       [![Build Status](https://travis-ci.com/jamesETsmith/MSAnalysis.svg?branch=master)](https://travis-ci.com/jamesETsmith/MSAnalysis)                       |
-| Windows | [![Build status](https://ci.appveyor.com/api/projects/status/onphhkq4828e2jiv/branch/master?svg=true)](https://ci.appveyor.com/project/jamesETsmith/msanalysis/branch/master) |
+|  OS   |                                                           Build Status                                                            |
+| :---: | :-------------------------------------------------------------------------------------------------------------------------------: |
+| Linux | [![Build Status](https://travis-ci.com/jamesETsmith/MSAnalysis.svg?branch=master)](https://travis-ci.com/jamesETsmith/MSAnalysis) |
+|  OSX  | [![Build Status](https://travis-ci.com/jamesETsmith/MSAnalysis.svg?branch=master)](https://travis-ci.com/jamesETsmith/MSAnalysis) |
+
+Python Versions Tested (other versions may work):
+|  OS   |        3.5         |        3.6         |        3.7         |        3.8         |
+| :---: | :----------------: | :----------------: | :----------------: | :----------------: |
+| Linux | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+|  OSX  | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |        :x:         |
+
+<!-- |  |                                                              Windows                                                              | [![Build status](https://ci.appveyor.com/api/projects/status/onphhkq4828e2jiv/branch/master?svg=true)](https://ci.appveyor.com/project/jamesETsmith/msanalysis/branch/master) | | -->
 
 [![codecov](https://codecov.io/gh/jamesETsmith/msanalysis/branch/master/graph/badge.svg)](https://codecov.io/gh/jamesETsmith/msanalysis)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/631fe5fec12f40c68a5336645e2ef56f)](https://app.codacy.com/manual/jamesETsmith/msanalysis?utm_source=github.com&utm_medium=referral&utm_content=jamesETsmith/msanalysis&utm_campaign=Badge_Grade_Dashboard)
