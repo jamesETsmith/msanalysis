@@ -1,7 +1,13 @@
 msanalysis
 ==============================
 [//]: # (Badges)
-[![Build Status](https://travis-ci.com/jamesETsmith/MSAnalysis.svg?branch=master)](https://travis-ci.com/jamesETsmith/MSAnalysis) [![codecov](https://codecov.io/gh/jamesETsmith/msanalysis/branch/master/graph/badge.svg)](https://codecov.io/gh/jamesETsmith/msanalysis)
+|   OS    |                                                                                 Build Status                                                                                  |
+| :-----: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|  Linux  |                       [![Build Status](https://travis-ci.com/jamesETsmith/MSAnalysis.svg?branch=master)](https://travis-ci.com/jamesETsmith/MSAnalysis)                       |
+|   OSX   |                       [![Build Status](https://travis-ci.com/jamesETsmith/MSAnalysis.svg?branch=master)](https://travis-ci.com/jamesETsmith/MSAnalysis)                       |
+| Windows | [![Build status](https://ci.appveyor.com/api/projects/status/onphhkq4828e2jiv/branch/master?svg=true)](https://ci.appveyor.com/project/jamesETsmith/msanalysis/branch/master) |
+
+[![codecov](https://codecov.io/gh/jamesETsmith/msanalysis/branch/master/graph/badge.svg)](https://codecov.io/gh/jamesETsmith/msanalysis)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/631fe5fec12f40c68a5336645e2ef56f)](https://app.codacy.com/manual/jamesETsmith/msanalysis?utm_source=github.com&utm_medium=referral&utm_content=jamesETsmith/msanalysis&utm_campaign=Badge_Grade_Dashboard)
 <!-- [![Maintainability](https://api.codeclimate.com/v1/badges/2163494ecded7e51bb0d/maintainability)](https://codeclimate.com/github/jamesETsmith/msanalysis/maintainability) -->
 
