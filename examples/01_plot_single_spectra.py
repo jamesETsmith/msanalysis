@@ -1,29 +1,32 @@
 """
-This example shows how to read a CDF file and plot the first spectra using matplotlib.
+This example shows how to read a mzXML file and plot the first spectra using matplotlib.
 
 Author: James E. T. Smith <james.smith9113@gmail.com>
 Date: 12/12/19
 """
 
 import matplotlib.pyplot as plt
+import seaborn as sns
 
-from msanalysis.data_extraction import read_cdf
-from msanalysis.sample_data import get_cdf_sample_path
+from msanalysis.data_extraction import read_mzXML
+from msanalysis.sample_data import get_mzXML_sample_path
 
 
 #
 # Read in CDF
 #
-times, spectra = read_cdf(get_cdf_sample_path())
-scan0 = spectra[0]
+data = read_mzXML(get_mzXML_sample_path())
+mz, intensities, times = data["mz"], data["intensities"], data["times"]
 
 #
 # Plot
 #
 plt.figure()
-# plt.plot(scan0["intensity"][::2])
-plt.plot(scan0["mz"], scan0["intensity"], c="k")
+sns.set_style("darkgrid")
+plt.plot(mz, intensities[0], c="k")
+plt.xlim((30, 125))
+plt.ylim((-0.2, 6.5))
 plt.xlabel("M/Z")
 plt.ylabel("Intensity")
+plt.tight_layout()
 plt.savefig("figures/ex1.png", dpi=600)
-

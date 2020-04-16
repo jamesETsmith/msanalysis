@@ -10,17 +10,14 @@ msanalysis
 ---
 ## Python Package Dependencies
 
-- pytest
-- pytest-cov
-- codecov
-- matplotlib
-- seaborn
-- netcdf4
-- numpy
-- scipy
-- pandas
-- pyopenms
-- black (only required for contributors)
+- [pytest-cov](https://docs.pytest.org/en/latest/)
+- [matplotlib](https://matplotlib.org/)
+- [seaborn](https://seaborn.pydata.org/)
+- [numpy](https://numpy.org/)
+- [scipy](https://www.scipy.org/)
+- [pandas](https://pandas.pydata.org/)
+- [pyopenms](https://pyopenms.readthedocs.io/en/latest/)
+- [black](https://black.readthedocs.io/en/stable/) (only required for contributors)
 
 
 ---

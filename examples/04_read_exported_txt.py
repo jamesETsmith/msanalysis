@@ -12,11 +12,16 @@ from matplotlib import colors
 from msanalysis.data_extraction import read_exported_txt
 from msanalysis.plotting.contour import contourf
 from msanalysis.data_processing.smoothing import moving_average
+from msanalysis.sample_data import get_txt_sample_path
+
+#
+# User defined variables
+#
+txt_file = get_txt_sample_path()
+# txt_file = "/home/james/Downloads/1-2260 (all).txt"
 
 # Set this path to
-mz, intensities = read_exported_txt("/home/james/Downloads/1-2260 (all).txt")
-# mz_lb, mz_ub = (60, 70)
-# mz_lb, mz_ub = (250, 280)
+mz, intensities = read_exported_txt(txt_file)
 mz_lb, mz_ub = (60, 280)
 
 keep_ith_scan = 1
@@ -59,6 +64,5 @@ plt.title("Log Scaling and Smoothing")
 plt.ylabel("MZ")
 plt.xlabel("Scan Number")
 plt.tight_layout()
-plt.savefig("figures/ex10.png", dpi=600)
+plt.savefig("figures/ex4.png", dpi=600)
 plt.show()
-

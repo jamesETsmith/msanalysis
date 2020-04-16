@@ -30,8 +30,8 @@ def gauss_conv(x, A, x0, noise=True):
 # Here are some examples ranging from no overlap in the isotopic envelop to a lot of overlap.
 # Uncomment the example you want to try below
 #
-species, ratio = (["InCl", "InCl2", "InC2H6"], [2, 35, 6])
-# species, ratio = (["MoF2Cl2", "MoO6", "MoO2Cl2"], [1.5, 2.5, 4.7])
+# species, ratio = (["InCl", "InCl2", "InC2H6"], [2, 35, 6])
+species, ratio = (["MoF2Cl2", "MoO6", "MoO2Cl2"], [1.5, 2.5, 4.7])
 # species, ratio = (["MoF2Cl2", "MoF2HCl2", "MoO4Cl"], [29, 3100, 30])
 # species, ratio = (["MoF2HCl2", "MoO4Cl"], [3100, 31])
 # species, ratio = (["CO", "CN"], [17, 41])

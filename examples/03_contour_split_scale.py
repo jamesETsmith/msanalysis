@@ -12,38 +12,40 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import matplotlib.colors as colors  # For log color scale
-from pyopenms import MSExperiment, MzXMLFile
 
+from msanalysis.data_extraction import read_mzXML
 from msanalysis.plotting.contour import contourf
+from msanalysis.sample_data import get_mzXML_sample_path, get_csv_sample_path
+
+#
+# User specified variables
+#
+
+labview_file = get_csv_sample_path()
+mzXML_file = get_mzXML_sample_path()
+# Users can specify their own path like the lines below
+# labview_file = "/home/james/Downloads/20200228_TP.csv"
+# mzXML_file = "/home/james/Downloads/20200228_1175.mzXML"
+
 
 #
 # Read CSV Data from LabView
 #
 cols = ["time", "b", "temp", "d", "e", "f", "g", "h"]
-df = pd.read_csv("/home/james/Downloads/20200228_TP.csv", names=cols)
+df = pd.read_csv(labview_file, names=cols)
 df["time"] -= df["time"][0]
 
 #
 # Use PyOpenMS to read mzXML
 #
-exp = MSExperiment()
-t0 = time.time()
-MzXMLFile().load("/home/james/Downloads/20200228_1175.mzXML", exp)
-print(f"Time to load file {time.time()-t0}")
+data = read_mzXML(mzXML_file)
+mz, intensities, times = data["mz"], data["intensities"], data["times"]
 
-# Dump List of PyOpenMS::Spectra to one NumPy array for MZ and a 2D array for
-# intensities
-n = len(exp.getSpectra())
-mz = exp.getSpectra()[0].get_peaks()[0]
-n_pt_per_scan = mz.size
-intensities = np.zeros((n, n_pt_per_scan))
-times = np.array([spec.getRT() / 1000 for spec in exp.getSpectra()])  # Now in seconds
-for i, s in enumerate(exp.getSpectra()):
-    intensities[i] = s.get_peaks()[1]
 
 #
 # Use timestamps from mzXML and Labview to interpolate temperature for each scan
 #
+times /= 1000  # Only using this because I have old mzXML files
 temp_interp = np.interp(times, df["time"], df["temp"])
 last_lv_time = np.array(df["time"])[-1]
 
@@ -56,7 +58,7 @@ intensities = intensities[subset, :]
 # Select a subset of MZ range and plot intensities as a contour plot
 #
 mz_lb, mz_ub = (60, 280)
-keep_ith_scan = 100
+keep_ith_scan = 1
 X, Y, Z = contourf(mz, intensities, mz_lb, mz_ub, keep_ith_scan=keep_ith_scan)
 print(X.shape, Y.shape, Z.shape)
 
@@ -109,9 +111,11 @@ kwargs.update(transform=axes[1].transAxes)  # switch to the bottom axes
 axes[1].plot((-d, +d), (1 - d, 1 + d), **kwargs)  # bottom-left diagonal
 axes[1].plot((1 - d, 1 + d), (1 - d, 1 + d), **kwargs)  # bottom-right diagonal
 
+
 cbar = fig.colorbar(m, ax=axes)
-cbar.ax.set_ylabel("Intensity (UNITS UNKNOWN)", rotation=270, fontsize=12, labelpad=15)
+cbar.ax.set_ylabel("Intensity", rotation=270, fontsize=12, labelpad=15)
 add_custom_ticks(plt.gca(), temp_interp)
 plt.xlabel("Temperature $^o$ C")
+plt.ylabel("M/Z")
 axes[0].set_title("Split MZ Scale Contour Plots")
-plt.savefig("figures/ex12_contour.png", dpi=600)
+plt.savefig("figures/ex3.png", dpi=600)

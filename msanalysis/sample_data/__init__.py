@@ -20,3 +20,11 @@ def get_labview_sample_path():
 
 def get_txt_sample_path():
     return os.path.join(dir_path, "TiCl4_SnF4.txt")
+
+
+def get_mzXML_sample_path():
+    return os.path.join(dir_path, "test.mzXML")
+
+
+def get_csv_sample_path():
+    return os.path.join(dir_path, "test.csv")

@@ -8,16 +8,17 @@ from .smoothing import moving_average
 
 
 def get_relative_abundance(
-    spectra: list, species_mz: list, bin_width: float = 0.45
+    mz: np.ndarray, intensities: np.ndarray, species_mz: list, bin_width: float = 0.45
 ) -> np.ndarray:
     """Return `np.ndarray` of abundances of the MZs specified
     
     Parameters
     ----------
-    spectra : list
-        List of spectra where each spectrum, call is data has two keys: data["mz"]
-        is an array of the mass/charge ratios and data["intensity"] is an array of
-        the intensities.
+    mz : np.ndarray
+        1D `np.ndarray` holding the mz values for the experiment.
+    intensities: np.ndarray
+        2D `np.ndarray` where the first axis is the scan number and the second one is
+        the m/z axis.
     species_mz : list
         List of MZs of interest.
     bin_width : float, optional
@@ -29,23 +30,13 @@ def get_relative_abundance(
         2D array (nspecies, nspectra). Abundances of species for all spectra given.
     """
 
-    abundances = []
+    abundances = np.zeros((len(species_mz), intensities.shape[0]))
 
-    for sp_i in spectra:
-        mz = sp_i["mz"]
-        I = sp_i["intensity"]
+    # For each species_mz of interest, bin and add the intensities
+    for i, species_mz_i in enumerate(species_mz):
+        ub = species_mz_i + bin_width
+        lb = species_mz_i - bin_width
+        indices = np.where((mz > lb) & (mz < ub))
+        abundances[i] = np.sum(intensities[:, indices[0]], axis=1)
 
-        I_j = np.zeros(
-            len(species_mz)
-        )  # Intensities of each species_mz in spectra sp_i
-
-        # For each species_mz of interest, bin and add the intensities
-        for j, species_mz_j in enumerate(species_mz):
-            ub = species_mz_j + bin_width
-            lb = species_mz_j - bin_width
-            indices = np.where((mz > lb) & (mz < ub))
-            I_j[j] = np.sum(I[indices])
-
-        abundances.append(I_j)
-
-    return np.array(abundances).T
+    return abundances
