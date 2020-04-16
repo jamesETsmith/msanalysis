@@ -14,6 +14,7 @@ import pandas as pd
 import matplotlib.colors as colors  # For log color scale
 
 from msanalysis.data_extraction import read_mzXML
+from msanalysis.plotting import add_custom_ticks
 from msanalysis.plotting.contour import contourf
 from msanalysis.sample_data import get_mzXML_sample_path, get_csv_sample_path
 
@@ -26,7 +27,8 @@ mzXML_file = get_mzXML_sample_path()
 # Users can specify their own path like the lines below
 # labview_file = "/home/james/Downloads/20200228_TP.csv"
 # mzXML_file = "/home/james/Downloads/20200228_1175.mzXML"
-
+# labview_file = "/home/james/Downloads/20200124_TP_2.csv"
+# mzXML_file = "/home/james/Downloads/20200124_17645.mzXML"
 
 #
 # Read CSV Data from LabView
@@ -45,14 +47,13 @@ mz, intensities, times = data["mz"], data["intensities"], data["times"]
 #
 # Use timestamps from mzXML and Labview to interpolate temperature for each scan
 #
-times /= 1000  # Only using this because I have old mzXML files
 temp_interp = np.interp(times, df["time"], df["temp"])
 last_lv_time = np.array(df["time"])[-1]
 
 # Only go as far as LabView data
 subset = np.where(times < last_lv_time)[0]
 times = times[subset]
-intensities = intensities[subset, :]
+intensities = intensities[subset]
 
 #
 # Select a subset of MZ range and plot intensities as a contour plot
@@ -61,19 +62,6 @@ mz_lb, mz_ub = (60, 280)
 keep_ith_scan = 1
 X, Y, Z = contourf(mz, intensities, mz_lb, mz_ub, keep_ith_scan=keep_ith_scan)
 print(X.shape, Y.shape, Z.shape)
-
-#
-# Convenience Function
-#
-def add_custom_ticks(ax: plt.Axes, tick_interp: np.ndarray):
-    # I'm playing some tricks here, and just relabeling the ticks on the x-axis
-    xticks = np.array(ax.get_xticks(), dtype=np.int)
-
-    # This catch is necessary because sometimes the last tick is out of bonds for our
-    # interpreted temp data
-    if xticks[-1] > tick_interp[-1]:
-        xticks = xticks[:-1]
-    ax.set_xticklabels(["{:.0f}".format(t) for t in tick_interp[xticks]])
 
 
 #
@@ -91,8 +79,8 @@ axes[1].contourf(X * keep_ith_scan, Y, Z)
 # axes[1].contourf(X * keep_ith_scan, Y, Z + 1e-4, norm=colors.LogNorm(vmin=1e-3, vmax=Z.max()))
 
 # Setting Ranges for each section
-axes[1].set_ylim(70, 80)
-axes[0].set_ylim(125, 140)
+axes[1].set_ylim(150, 160)
+axes[0].set_ylim(185, 195)
 
 # Playing with Ticks
 axes[0].spines["top"].set_visible(False)

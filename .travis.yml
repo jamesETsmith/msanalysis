@@ -40,7 +40,7 @@ install:
   - cd ..
 
 script:
-  - pytest -v --cov=msanalysis msanalysis/
+  - pytest -v --cov-config=.coveragec --cov=msanalysis msanalysis
 
 notifications:
   email: false

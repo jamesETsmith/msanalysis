@@ -1,6 +1,7 @@
 """
 Plotting wrappers for common data visualization.
 """
+import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -28,3 +29,17 @@ def select_mz_range(lb: float, ub: float, m: np.ndarray, i: np.ndarray):
 
     indices = np.where((m > lb) & (m < ub))
     return (m[indices], i[indices])
+
+
+#
+# Convenience Function
+#
+def add_custom_ticks(ax: plt.Axes, tick_interp: np.ndarray):
+    # I'm playing some tricks here, and just relabeling the ticks on the x-axis
+    xticks = np.array(ax.get_xticks(), dtype=np.int)
+
+    # This catch is necessary because sometimes the last tick is out of bonds for our
+    # interpreted temp data
+    if xticks[-1] > tick_interp[-1]:
+        xticks = xticks[:-1]
+    ax.set_xticklabels(["{:.0f}".format(t) for t in tick_interp[xticks]])

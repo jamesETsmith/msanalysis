@@ -2,24 +2,18 @@ import os
 import pytest
 import numpy as np
 
-from msanalysis.data_extraction import read_cdf, read_exported_txt
-from msanalysis.sample_data import get_cdf_sample_path, get_txt_sample_path
+from msanalysis.data_extraction import read_mzXML, read_exported_txt
+from msanalysis.sample_data import get_mzXML_sample_path, get_txt_sample_path
 
 npt = np.testing
 
 
-def test_read_cdf():
-    times, spectra = read_cdf(get_cdf_sample_path())
-
-    npt.assert_equal(times.size, len(spectra))
-
-    # Check output datatypes
-    npt.assert_equal(type(times), np.ndarray)
-    npt.assert_equal(type(spectra), list)
-    npt.assert_equal(type(spectra[0]), dict)
-
-    # Check that individual spectra have desired keys
-    npt.assert_equal(set(spectra[0].keys()), {"mz", "intensity"})
+def test_read_mzXML():
+    data = read_mzXML(get_mzXML_sample_path())
+    mz, intensities, times = data["mz"], data["intensities"], data["times"]
+    npt.assert_equal(len(intensities.shape), 2)
+    npt.assert_equal(times.size, intensities.shape[0])
+    npt.assert_equal(mz.size, intensities.shape[1])
 
 
 def test_read_exported_txt():

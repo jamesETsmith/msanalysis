@@ -1,0 +1,4 @@
+[run]
+omit = 
+    ./msanalysis/sample_data/make_sample_data.py
+    ./msanalysis/_version.py
