@@ -1,12 +1,28 @@
-msanalysis
-==============================
-[//]: # (Badges)
+# MSAnalysis
+
+`msanalysis` is a lightweight python package to read and process mass spectra, specifically those in the CDF format.
+
+  - [General](#general)
+    - [Build Info](#build-info)
+    - [Python Versions Tested](#python-versions-tested)
+  - [Dependencies](#dependencies)
+  - [Installation](#installation)
+    - [Fresh install](#fresh-install)
+    - [Patches](#patches)
+  - [Testing](#testing)
+  - [Copyright](#copyright)
+  - [Acknowledgements](#acknowledgements)
+
+## General
+---
+
+### Build Info
 |  OS   |                                                           Build Status                                                            |
 | :---: | :-------------------------------------------------------------------------------------------------------------------------------: |
 | Linux | [![Build Status](https://travis-ci.com/jamesETsmith/MSAnalysis.svg?branch=master)](https://travis-ci.com/jamesETsmith/MSAnalysis) |
 |  OSX  | [![Build Status](https://travis-ci.com/jamesETsmith/MSAnalysis.svg?branch=master)](https://travis-ci.com/jamesETsmith/MSAnalysis) |
 
-Python Versions Tested (other versions may work):
+### Python Versions Tested
 |  OS   |        3.5         |        3.6         |        3.7         |        3.8         |
 | :---: | :----------------: | :----------------: | :----------------: | :----------------: |
 | Linux | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -14,15 +30,9 @@ Python Versions Tested (other versions may work):
 
 <!-- |  |                                                              Windows                                                              | [![Build status](https://ci.appveyor.com/api/projects/status/onphhkq4828e2jiv/branch/master?svg=true)](https://ci.appveyor.com/project/jamesETsmith/msanalysis/branch/master) | | -->
 
-[![codecov](https://codecov.io/gh/jamesETsmith/msanalysis/branch/master/graph/badge.svg)](https://codecov.io/gh/jamesETsmith/msanalysis)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/631fe5fec12f40c68a5336645e2ef56f)](https://app.codacy.com/manual/jamesETsmith/msanalysis?utm_source=github.com&utm_medium=referral&utm_content=jamesETsmith/msanalysis&utm_campaign=Badge_Grade_Dashboard)
-<!-- [![Maintainability](https://api.codeclimate.com/v1/badges/2163494ecded7e51bb0d/maintainability)](https://codeclimate.com/github/jamesETsmith/msanalysis/maintainability) -->
-
-`msanalysis` is a lightweight python package to read and process mass spectra, specifically those in the CDF format.
-
 
 ---
-## Python Package Dependencies
+## Dependencies
 
 - [pytest-cov](https://docs.pytest.org/en/latest/)
 - [matplotlib](https://matplotlib.org/)
@@ -86,12 +96,12 @@ pytest -v msanalysis --cov=msanalysis
 ```
 
 ---
-### Copyright
+## Copyright
 
 Copyright (c) 2019, James E. T. Smith/ CU Boulder
 
-
-#### Acknowledgements
+---
+## Acknowledgements
  
 Project based on the 
 [Computational Molecular Science Python Cookiecutter](https://github.com/molssi/cookiecutter-cms) version 1.1.
