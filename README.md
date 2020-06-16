@@ -1,6 +1,6 @@
 # MSAnalysis
 
-`msanalysis` is a lightweight python package to read and process mass spectra, specifically those in the CDF format.
+`msanalysis` is a lightweight python package to read and process mass spectra, specifically those in the mzXML format.
 
   - [General](#general)
     - [Build Info](#build-info)
@@ -47,7 +47,7 @@
 ---
 ## Installation
 
-Set up is meant to be easy! First we suggest installing all of prerequisites in a clean conda env (run this inside the main directory of the package):
+Set up is meant to be easy! First we suggest installing all of prerequisites in a clean [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/) env (run this inside the main directory of the package):
 
 ```bash
 conda env create -f devtools/conda-envs/msanalysis_env.yaml

@@ -24,8 +24,8 @@ mzXML_file = get_mzXML_sample_path()
 # Users can specify their own path like the lines below
 # labview_file = "/home/james/Downloads/20200228_TP.csv"
 # mzXML_file = "/home/james/Downloads/20200228_1175.mzXML"
-# labview_file = "/home/james/Downloads/20200124_TP_2.csv"
-# mzXML_file = "/home/james/Downloads/20200124_17645.mzXML"
+# labview_file = "20200612_TP.csv"
+# mzXML_file = "20200612_2735.mzXML"
 
 #
 # Read CSV Data from LabView
@@ -33,24 +33,22 @@ mzXML_file = get_mzXML_sample_path()
 cols = ["time", "b", "temp", "d", "e", "f", "g", "h"]
 df = pd.read_csv(labview_file, names=cols)
 df["time"] -= df["time"][0]
+last_lv_time = np.array(df["time"])[-1]
 
 #
 # Read in mzXML
 #
 data = read_mzXML(mzXML_file)
 mz, intensities, times = data["mz"], data["intensities"], data["times"]
-
+# Only go as far as LabView data (which we are assuming is always shut off after the mass spec)
+subset = np.where(times <= last_lv_time)[0]
+times = times[subset]
+intensities = intensities[subset]
 
 #
 # Use timestamps from mzXML and Labview to interpolate temperature for each scan
 #
 temp_interp = np.interp(times, df["time"], df["temp"])
-last_lv_time = np.array(df["time"])[-1]
-
-# Only go as far as LabView data (which we are assuming is always shut off after the mass spec)
-subset = np.where(times <= last_lv_time)[0]
-times = times[subset]
-intensities = intensities[subset]
 
 #
 # Get abundances
