@@ -40,6 +40,6 @@ def add_custom_ticks(ax: plt.Axes, tick_interp: np.ndarray):
 
     # This catch is necessary because sometimes the last tick is out of bonds for our
     # interpreted temp data
-    if xticks[-1] > tick_interp[-1]:
+    if xticks[-1] > tick_interp[-1].size:
         xticks = xticks[:-1]
     ax.set_xticklabels(["{:.0f}".format(t) for t in tick_interp[xticks]])

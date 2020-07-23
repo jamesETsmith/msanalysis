@@ -59,7 +59,7 @@ temp_interp = np.interp(times, df["time"], df["temp"])
 mz_lb, mz_ub = (60, 280)
 keep_ith_scan = 1
 X, Y, Z = contourf(mz, intensities, mz_lb, mz_ub, keep_ith_scan=keep_ith_scan)
-print(X.shape, Y.shape, Z.shape)
+# print(X.shape, Y.shape, Z.shape)
 
 
 #
@@ -100,8 +100,9 @@ axes[1].plot((1 - d, 1 + d), (1 - d, 1 + d), **kwargs)  # bottom-right diagonal
 
 cbar = fig.colorbar(m, ax=axes)
 cbar.ax.set_ylabel("Intensity", rotation=270, fontsize=12, labelpad=15)
-add_custom_ticks(plt.gca(), temp_interp)
 plt.xlabel("Temperature $^o$ C")
-plt.ylabel("M/Z")
+fig.text(0.02, 0.5, "M/Z", ha="center", va="center", rotation="vertical")
+
+add_custom_ticks(plt.gca(), temp_interp)
 axes[0].set_title("Split MZ Scale Contour Plots")
 plt.savefig("figures/ex3.png", dpi=600)
