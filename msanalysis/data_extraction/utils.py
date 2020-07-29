@@ -122,6 +122,11 @@ def read_mzXML(filename: str) -> dict:
     intensities = np.zeros((n, n_pt_per_scan))
     times = np.array([spec.getRT() for spec in exp.getSpectra()])  # Now in seconds
     for i, s in enumerate(exp.getSpectra()):
-        intensities[i] = s.get_peaks()[1]
+        peaks = s.get_peaks()[1]
+        if peaks.size == 0:
+            print(f"Scan {i} (0-based indexing) is empty.")
+            raise ValueError(f"One (or more) empty scans in {filename}, exiting!!")
+        else:
+            intensities[i] = peaks
 
     return {"mz": mz, "intensities": intensities, "times": times}
