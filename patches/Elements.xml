@@ -602,20 +602,24 @@
       <ITEM name="AtomicNumber" value="32" type="int" />
       <NODE name="Isotopes">
         <NODE name="70">
-          <ITEM name="RelativeAbundance" value="20.38" type="float"/>
+          <ITEM name="RelativeAbundance" value="20.5" type="float"/>
           <ITEM name="AtomicMass" value="69.9242474" type="float"/>
         </NODE>
         <NODE name="72">
-          <ITEM name="RelativeAbundance" value="27.31" type="float"/>
+          <ITEM name="RelativeAbundance" value="27.4" type="float"/>
           <ITEM name="AtomicMass" value="71.9220758" type="float"/>
         </NODE>
         <NODE name="73">
-          <ITEM name="RelativeAbundance" value="7.76" type="float"/>
+          <ITEM name="RelativeAbundance" value="7.8" type="float"/>
           <ITEM name="AtomicMass" value="72.9234589" type="float"/>
         </NODE>
         <NODE name="74">
-          <ITEM name="RelativeAbundance" value="36.72" type="float"/>
+          <ITEM name="RelativeAbundance" value="36.5" type="float"/>
           <ITEM name="AtomicMass" value="73.9211778" type="float"/>
+        </NODE>
+        <NODE name="76">
+          <ITEM name="RelativeAbundance" value="7.8" type="float"/>
+          <ITEM name="AtomicMass" value="75.921401" type="float"/>
         </NODE>
       </NODE>
     </NODE>
